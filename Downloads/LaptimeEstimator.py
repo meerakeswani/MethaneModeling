@@ -53,13 +53,13 @@ lowerBoundSpeedArray = []
 targetSpeedArray = df['Target Speed'] 
 targetSpeedArray = targetSpeedArray[~np.isnan(targetSpeedArray)]
 
-for speed in speedArray: 
+for targetSpeed in targetSpeedArray:
     lowerBoundSpeed = 0
     diff = 1000 
-    for targetSpeed in targetSpeedArray: 
-        if (abs(targetSpeed-speed) < diff): 
-            lowerBoundSpeed = targetSpeed 
-            diff = abs(targetSpeed-speed) 
+    for speed in speedArray:
+        if (abs(targetSpeed-speed) < diff):
+            lowerBoundSpeed = speed
+            diff = abs(targetSpeed-speed)
     lowerBoundSpeedArray.append(lowerBoundSpeed) 
 
 upperBoundSpeedArray = [] 
@@ -109,7 +109,7 @@ for i in range(len(closestUpperBoundPowerArray)):
 
 
 
-print( "lower bound speed: ", lowerBoundSpeedArray[0], " mph")
-print( "upper bound speed: ", upperBoundSpeedArray[0], " mph") 
+print( "target lower bound speed: ", lowerBoundSpeedArray[0], " mph")
+print( "target upper bound speed: ", upperBoundSpeedArray[0], " mph")
 print("power estimated: ", powerEstimatedArray[0], " W")
 
